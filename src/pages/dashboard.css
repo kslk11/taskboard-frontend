@@ -1,0 +1,156 @@
+.Dashboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .lists-container {
+    display: flex;
+    justify-content: center; /* Center lists horizontally */
+    margin-top: 20px; /* Add some margin between navbar and lists */
+    margin: auto;
+  }
+  
+  .list {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+  }
+  
+  .tasks {
+    min-height: 100px;
+    border: 1px dashed #aaa;
+    padding: 10px;
+  }
+  
+  div[draggable='true'] {
+    margin: 5px 0;
+    padding: 8px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    cursor: grab;
+  }
+  
+  button {
+    margin-left: 5px;
+  }
+  
+
+
+  .task {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+  }
+  
+  input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  
+  .create-list {
+    margin: 10px;
+  }
+  
+  .create-list-btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+  
+  .create-list-btn:hover {
+    background-color: #45a049;
+  }
+
+
+  .add-task {
+    margin-top: 10px;
+  }
+  
+  .add-task-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+  
+  .add-task-btn:hover {
+    background-color: #2980b9;
+  }
+
+  
+.navbar {
+    position: fixed;
+    top: 0px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 10px;
+    color: white;
+    width: 100%; /* Make the navbar take the full width */
+  }
+  
+  .username {
+    font-weight: bold;
+  }
+  
+  .logout-btn {
+    background-color: #ff6347; /* Tomato color */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+  
+  .logout-btn:hover {
+    background-color: #cc4c3e; /* Darker Tomato color on hover */
+  }
+  
+
+  /* Style for the modal */
+.ReactModal__Overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.ReactModal__Content {
+  position: relative;
+  background: white;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+}
+
+
+.task {
+  transition: opacity 0.5s ease; /* 0.5s transition for opacity */
+}
+
+.task.removing {
+  opacity: 0; /* Set opacity to 0 for removing tasks */
+}
+
+.completed-task {
+  text-decoration: line-through; /* or any other styling for completed tasks */
+  color: #777; /* Optional: change text color for completed tasks */
+}
+
+.taskcheck input[type="checkbox"]:checked + span::before {
+  content: '\2713'; /* Unicode character for a checkmark */
+  font-size: 18px;
+  color: green; /* Change the color as desired */
+  margin-right: 5px;
+}
