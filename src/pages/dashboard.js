@@ -30,14 +30,14 @@ const Dashboard = () => {
       try {
         // Fetch user lists
         const listsResponse = await axios.get(
-          `http://localhost:3001/lists/${userId}`,
+          `http://localhost:5446/lists/${userId}`,
         );
         const userLists = listsResponse.data;
 
         // Fetch tasks for each list
         const fetchTasksPromises = userLists.map(async (list) => {
           const tasksResponse = await axios.get(
-            `http://localhost:3001/tasks/${list.list_id}`,
+            `http://localhost:5446/tasks/${list.list_id}`,
           );
           const tasks = tasksResponse.data;
           return { ...list, tasks };
@@ -91,7 +91,7 @@ const Dashboard = () => {
     setTimeout(async () => {
       try {
         // Make a DELETE request to delete the task
-        await axios.delete(`http://localhost:3001/tasks/${taskId}`);
+        await axios.delete(`http://localhost:5446/tasks/${taskId}`);
   
         // Update the state to remove the task
         setLists((prevLists) => {
@@ -104,7 +104,7 @@ const Dashboard = () => {
                 // Check if the list is empty after removal
                 if (list.tasks.length == 0) {
                   // If the list is empty, make a DELETE request to delete the list
-                  axios.delete(`http://localhost:3001/lists/${list.list_id}`);
+                  axios.delete(`http://localhost:5446/lists/${list.list_id}`);
                   return null; // Return null to indicate removing the list
                 }
               }
@@ -139,7 +139,7 @@ const Dashboard = () => {
       }
 
       // Make a POST request to create a new list
-      const response = await axios.post("http://localhost:3001/lists", {
+      const response = await axios.post("http://localhost:5446/lists", {
         list_name: newListName,
         user_id: userId,
       });
@@ -166,7 +166,7 @@ const Dashboard = () => {
   const handleAddTask = async (taskText, listId) => {
     try {
       // Make a POST request to create a new task
-      const response = await axios.post("http://localhost:3001/tasks", {
+      const response = await axios.post("http://localhost:5446/tasks", {
         task_description: taskText,
         list_id: listId,
         task_status: "pending", // You can set the initial status as needed
@@ -221,9 +221,9 @@ const Dashboard = () => {
 
     try {
       // console.log("Destination list id: ", listId);
-      await axios.delete(`http://localhost:3001/tasks/${taskId}`);
+      await axios.delete(`http://localhost:5446/tasks/${taskId}`);
 
-      await axios.post("http://localhost:3001/tasks", {
+      await axios.post("http://localhost:5446/tasks", {
         task_description: task_description, // Replace with your task description
         list_id: listId, // Replace with your target list ID
         task_status: "", // Replace with your task status
@@ -232,19 +232,19 @@ const Dashboard = () => {
       // Check if the list is empty after removal
       // if (sourceListLength <= 1) {
       //   // If the list is empty, make a DELETE request to delete the list
-      //   axios.delete(`http://localhost:3001/lists/${sourceListId}`);
+      //   axios.delete(`http://localhost:5446/lists/${sourceListId}`);
       //   return null; // Return null to indicate removing the list
       // }
       // Fetch user lists
       const listsResponse = await axios.get(
-        `http://localhost:3001/lists/${userId}`,
+        `http://localhost:5446/lists/${userId}`,
       );
       const userLists = listsResponse.data;
 
       // Fetch tasks for each list
       const fetchTasksPromises = userLists.map(async (list) => {
         const tasksResponse = await axios.get(
-          `http://localhost:3001/tasks/${list.list_id}`,
+          `http://localhost:5446/tasks/${list.list_id}`,
         );
         const tasks = tasksResponse.data;
         return { ...list, tasks };
